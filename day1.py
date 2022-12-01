@@ -17,3 +17,18 @@ response = requests.get(
 )
 
 data = response.text
+
+
+## PART 1 & 2
+elf_table = [elf for elf in data.split("\n\n")]
+calorie_table = [cals.split("\n") for cals in elf_table[:-1]]
+calorie_table = [[int(x) for x in cals] for cals in calorie_table]
+
+sum_table = [sum(x) for x in calorie_table]
+
+
+print("Part 1:")
+print(max(sum_table))
+
+print("Part 2:")
+print(sum(sorted(sum_table)[-3:]))
