@@ -5,4 +5,5 @@ Advent of Code 2022 in Python
 * Day 2 - Completed
 * Day 3 - Completed
 * Day 4 - Completed
-* Day 4 - Not started
+* Day 5 - Completed (spent many hours thinking I could maximum move 3 crates per move)
+* Day 6 - Not started
