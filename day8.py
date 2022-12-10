@@ -10,7 +10,7 @@ import numpy as np
 import requests
 
 SESSION_KEY = {"session": os.environ.get("SESSION_KEY", None)}
-DAY = int(re.findall(r"[0-9]", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
+DAY = int(re.findall(r"[0-9]+", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
 
 
 response = requests.get(

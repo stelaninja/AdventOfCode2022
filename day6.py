@@ -9,7 +9,7 @@ import sys
 import requests
 
 SESSION_KEY = {"session": os.environ.get("SESSION_KEY", None)}
-DAY = int(re.findall(r"[0-9]", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
+DAY = int(re.findall(r"[0-9]+", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
 
 
 response = requests.get(
@@ -30,7 +30,7 @@ for part, marker_type in zip(range(1, 3), ["packet", "message"]):
 
     while not marker:
         idx += 1
-        if len(set(data[idx-m_len:idx])) == m_len:
+        if len(set(data[idx - m_len : idx])) == m_len:
             marker = True
 
-    print(f"Part {part}: {idx}") 
+    print(f"Part {part}: {idx}")

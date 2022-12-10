@@ -9,27 +9,30 @@ import sys
 import requests
 
 SESSION_KEY = {"session": os.environ.get("SESSION_KEY", None)}
-DAY = int(re.findall(r"[0-9]", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
+DAY = int(re.findall(r"[0-9]+", sys.argv[0].rsplit("/", maxsplit=1)[-1])[0])
 
 
 response = requests.get(
     f"https://adventofcode.com/2022/day/{DAY}/input", cookies=SESSION_KEY, timeout=500
 )
 
-data = response.text #.strip().split("\n")
+data = response.text  # .strip().split("\n")
 stacks, moves = data.split("\n\n")
 moves = moves.strip()
-stack_table = {i: [] for i in range(1, max([int(x) for x in re.findall("[0-9]+", stacks)]) + 1)}
+stack_table = {
+    i: [] for i in range(1, max([int(x) for x in re.findall("[0-9]+", stacks)]) + 1)
+}
 
 for line in stacks.split("\n")[:-1]:
     for i in range(len(line) - 1):
         if i >= len(stack_table):
             break
-        search_range = line[i * 4: i * 4 + 4]
+        search_range = line[i * 4 : i * 4 + 4]
         if re.search("[A-Z]", search_range):
             stack_table[i + 1].append(
-                search_range.replace(" ", "")
-                .replace("[", "").replace("]", ""))
+                search_range.replace(" ", "").replace("[", "").replace("]", "")
+            )
+
 
 def move_crates(s_table, max_move_size=False):
     """
@@ -63,6 +66,7 @@ def move_crates(s_table, max_move_size=False):
             st[to_stack] = [x for y in st[to_stack] for x in y]
 
     return st
+
 
 # PART 1
 p1_stack = move_crates(stack_table, True)
