@@ -9,3 +9,5 @@ My solutions to Advent of Code 2022, in Python.
 * Day 6 - Completed
 * Day 7 - Not Completed
 * Day 8 - Completed part 1
+* Day 9 - Started on part 1
+* Day 10 - Completed part 1
